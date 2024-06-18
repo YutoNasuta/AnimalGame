@@ -12,15 +12,20 @@ namespace NakashiLib
 {
 	class CollisionMesh;
 }
+
+class StageCase;
+
 class GenerateStage
 {
 private:
-	static const unsigned int LAND_HEIGHT = 20;
-	static const unsigned int LAND_WIDTH = 20;
+	static const unsigned int LAND_HEIGHT = 22;
+	static const unsigned int LAND_WIDTH = 22;
+	static const unsigned int STAGE_QUANTITY = 4;
 
 	float m_landScape[LAND_HEIGHT][LAND_WIDTH];
 
 	std::unique_ptr<NakashiLib::CollisionMesh> m_collisionMesh;	
+	std::unique_ptr<StageCase> m_stageCase[STAGE_QUANTITY];
 
 	int m_octaves;
 	float m_correction;
@@ -43,4 +48,10 @@ public:
 	float GetLandScape(int height, int width) { return m_landScape[height][width]; }
 
 	NakashiLib::CollisionMesh* GetCollisionMesh() { return m_collisionMesh.get(); }
+
+	void CreatePerlinNoise();
+
+	void CreateVertex(ID3D11Device* device, ID3D11DeviceContext* context);
+
+	void CreateStageCase();
 };

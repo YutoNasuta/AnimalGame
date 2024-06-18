@@ -35,7 +35,7 @@ public:
 	// ‰Šú‰»
 	virtual void Initialize() = 0;
 	// XV
-	virtual void Update(const DX::StepTimer& timer, 
+	virtual void Update(
 		const DirectX::SimpleMath::Vector3& position , 
 		const DirectX::SimpleMath::Quaternion& quaternion) = 0;
 	// q‚É‚·‚é

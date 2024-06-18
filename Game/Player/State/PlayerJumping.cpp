@@ -13,6 +13,7 @@
 #include"Game/Player/PlayerPart/PlayerBody.h"
 #include"Game/Player/PlayerPart/PlayerLeftHand.h"
 #include"Game/Player/PlayerPart/PlayerRightHand.h"
+#include"Framework/StepTimer.h"
 
 /// <summary>
 /// コンストラクタ
@@ -138,6 +139,7 @@ void PlayerJumping::MoveChild()
 /// </summary>
 void PlayerJumping::MoveHand()
 {
+	auto Timer = m_commonResources->GetStepTimer();
 	auto rightHand = m_player->GetBody()->GetRightHand();		//右手取得
 	auto leftHand = m_player->GetBody()->GetLeftHand();
 
@@ -146,7 +148,7 @@ void PlayerJumping::MoveHand()
 	float swingAmount = 0.8f;
 
 	// 振りモーションを追加
-	float swing = sin(m_player->GetTotalTime() * swingSpeed) * swingAmount;
+	float swing = sin(Timer->GetTotalSeconds() * swingSpeed) * swingAmount;
 
 	// プレイヤーの右手の位置を計算
 	auto rightQuaternion = DirectX::SimpleMath::Quaternion::CreateFromYawPitchRoll(0.0f, swing, 0.0f);

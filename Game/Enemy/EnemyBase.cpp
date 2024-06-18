@@ -70,7 +70,6 @@ void EnemyBase::Initialize(
 /// <param name="position">位置</param>
 /// <param name="quaternion">回転</param>
 void EnemyBase::Update(
-	const DX::StepTimer& timer, 
 	const DirectX::SimpleMath::Vector3& position, 
 	const DirectX::SimpleMath::Quaternion& quaternion
 )
@@ -78,7 +77,7 @@ void EnemyBase::Update(
 	// パーツの更新
 	for (auto& Part : m_enemyParts)
 	{
-		Part->Update(timer, position, quaternion);
+		Part->Update(position, quaternion);
 	
 	}
 

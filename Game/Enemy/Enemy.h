@@ -38,7 +38,7 @@ public:
 
     void Initialize() override;
     void Update(
-        const DX::StepTimer& timer,
+   
         const DirectX::SimpleMath::Vector3& position,
         const DirectX::SimpleMath::Quaternion& quaternion) override;
 

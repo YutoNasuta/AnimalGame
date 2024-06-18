@@ -61,7 +61,7 @@ public:
 	// ‰Šú‰»
 	virtual void Initialize(int nodeNumber ,DirectX::Model* model);
 	// XV
-	inline virtual void Update(const DX::StepTimer& timer ,
+	inline virtual void Update(
 		const DirectX::SimpleMath::Vector3& position, 
 		const DirectX::SimpleMath::Quaternion& quaternion);
 	// q‚Ì’Ç‰Á

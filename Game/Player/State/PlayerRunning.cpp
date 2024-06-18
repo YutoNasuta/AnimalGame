@@ -14,7 +14,7 @@
 #include"Game/Player/PlayerPart/PlayerRightHand.h"
 #include"Game/Player/PlayerPart/PlayerLeftHand.h"
 #include"Game/Player/PlayerPart/PlayerTail.h"
-
+#include"Framework/StepTimer.h"
 /// <summary>
 /// コンストラクタ
 /// </summary>
@@ -185,6 +185,7 @@ void PlayerRunning::MoveChild()
 /// </summary>
 void PlayerRunning::MoveHand()
 {
+	auto Timer = m_commonResources->GetStepTimer();
 	auto rightHand = m_player->GetBody()->GetRightHand();		// 右手取得
 	auto leftHand = m_player->GetBody()->GetLeftHand();			// 左手取得
 
@@ -193,7 +194,7 @@ void PlayerRunning::MoveHand()
 	float swingAmount = 0.8f;
 
 	// 振りモーションを追加
-	float swing = sin(m_player->GetTotalTime() * swingSpeed) * swingAmount;
+	float swing = sin(Timer->GetTotalSeconds() * swingSpeed) * swingAmount;
 
 	// プレイヤーの右手の位置を計算
 	auto rightQuaternion =  DirectX::SimpleMath::Quaternion::CreateFromYawPitchRoll(0.0f, swing, 0.0f);
@@ -218,13 +219,14 @@ void PlayerRunning::MoveBody()
 /// </summary>
 void PlayerRunning::MoveTail()
 {
+	auto Timer = m_commonResources->GetStepTimer();
 	auto tail = m_player->GetBody()->GetTail();
 	// 振りモーションのパラメーター
 	float swingSpeed = 7.0f;
 	float swingAmount = 0.6f;
 
 	// 振りモーションを追加
-	float swing = sin(m_player->GetTotalTime() * swingSpeed) * swingAmount;
+	float swing = sin(Timer->GetTotalSeconds() * swingSpeed) * swingAmount;
 	auto swingQuaternion = DirectX::SimpleMath::Quaternion::CreateFromYawPitchRoll(0.0f, 0.0f, swing);
 
 	tail->SetAddQuaternion(swingQuaternion);

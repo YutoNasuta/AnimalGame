@@ -62,11 +62,9 @@ void PlayerRightHand::Initialize()
 /// <param name="position">位置</param>
 /// <param name="quaternion">回転</param>
 void PlayerRightHand::Update(
-	const DX::StepTimer& timer, 
 	const DirectX::SimpleMath::Vector3& position , 
 	const DirectX::SimpleMath::Quaternion& quaternion)
 {
-	UNREFERENCED_PARAMETER(timer);
 
 	DirectX::SimpleMath::Vector3 localPosition = position;
 	DirectX::SimpleMath::Quaternion localQuaternion = quaternion;
@@ -77,7 +75,6 @@ void PlayerRightHand::Update(
 	m_quaternion = quaternion;			// 現在の回転角を更新する
 
 	PlayerBase::Update(			//ベースを更新
-		timer,
 		m_position,
 		m_quaternion);
 

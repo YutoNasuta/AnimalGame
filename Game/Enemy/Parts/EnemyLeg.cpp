@@ -65,11 +65,9 @@ void EnemyLeg::Initialize()
 /// <param name="position">ˆÊ’u</param>
 /// <param name="quaternion">‰ñ“]</param>
 void EnemyLeg::Update(
-	const DX::StepTimer& timer, 
 	const DirectX::SimpleMath::Vector3& position , 
 	const DirectX::SimpleMath::Quaternion& quaternion)
 {
-	UNREFERENCED_PARAMETER(timer);
 
 	DirectX::SimpleMath::Vector3 localPosition = position;
 	DirectX::SimpleMath::Quaternion localQuaternion = m_quaternion;
@@ -80,7 +78,6 @@ void EnemyLeg::Update(
 	m_quaternion = quaternion;			// Œ»İ‚Ì‰ñ“]Šp‚ğXV‚·‚é
 
 	PlayerBase::Update(
-		timer,
 		m_position,
 		m_quaternion);
 

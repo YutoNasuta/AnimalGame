@@ -44,9 +44,6 @@
     <Filter Include="Game\Camera">
       <UniqueIdentifier>{92c0c61d-12dc-4a9c-ac60-4dbfe4e84ed9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Collision">
-      <UniqueIdentifier>{75d81f37-55b6-4716-99b4-ff005f6c7883}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Framework">
       <UniqueIdentifier>{d936cdf3-5983-44e8-86bb-78b9e2fa5c36}</UniqueIdentifier>
     </Filter>
@@ -109,15 +106,6 @@
     </ClInclude>
     <ClInclude Include="Game\Camera\TPSCamera.h">
       <Filter>Game\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Collision\DisplayCollision.h">
-      <Filter>Game\Collision</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Collision\Collision.h">
-      <Filter>Game\Collision</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Collision\ObjMeshCollision.h">
-      <Filter>Game\Collision</Filter>
     </ClInclude>
     <ClInclude Include="Framework\DeviceResources.h">
       <Filter>Framework</Filter>
@@ -248,6 +236,9 @@
     <ClInclude Include="Game\Game.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Stage\StageCase.h">
+      <Filter>Game\Stage</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -274,12 +265,6 @@
     </ClCompile>
     <ClCompile Include="Game\Camera\TPSCamera.cpp">
       <Filter>Game\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Collision\DisplayCollision.cpp">
-      <Filter>Game\Collision</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Collision\ObjMeshCollision.cpp">
-      <Filter>Game\Collision</Filter>
     </ClCompile>
     <ClCompile Include="Framework\DeviceResources.cpp">
       <Filter>Framework</Filter>
@@ -391,6 +376,9 @@
     </ClCompile>
     <ClCompile Include="Game\Main.cpp">
       <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Stage\StageCase.cpp">
+      <Filter>Game\Stage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

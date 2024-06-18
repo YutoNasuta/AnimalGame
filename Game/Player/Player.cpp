@@ -47,7 +47,6 @@ Player::Player(
 	m_runnning{},
 	m_throw{},
 	m_taking{},
-	m_totalTime{},
 	m_nodeNumber(0)
 {
 	m_commonResources = CommonResources::GetInstance();
@@ -95,19 +94,13 @@ void Player::Initialize()
 /// <param name="position">位置</param>
 /// <param name="quaternion">回転</param>
 void Player::Update(
-	const DX::StepTimer& timer, 
 	const DirectX::SimpleMath::Vector3& position,
 	const DirectX::SimpleMath::Quaternion& quaternion
 )
 {
-	UNREFERENCED_PARAMETER(timer);
-
-	m_totalTime += timer.GetElapsedSeconds();
-
 	m_currentState->Update();											// ステートパターンを回す
 
 	PlayerBase::Update(														// ベースの更新
-		timer,
 		m_position + GetInitialPosition(),
 		m_quaternion
 	);

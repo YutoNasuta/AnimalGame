@@ -73,7 +73,6 @@ void PlayerBase::Initialize(
 /// <param name="position">位置</param>
 /// <param name="quaternion">回転</param>
 void PlayerBase::Update(
-	const DX::StepTimer& timer, 
 	const DirectX::SimpleMath::Vector3& position, 
 	const DirectX::SimpleMath::Quaternion& quaternion
 )
@@ -81,7 +80,7 @@ void PlayerBase::Update(
 	// パーツの更新
 	for (auto& Part : m_playerParts)
 	{
-		Part->Update(timer, position, quaternion);
+		Part->Update(position, quaternion);
 	
 	}
 

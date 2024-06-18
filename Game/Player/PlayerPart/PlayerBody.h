@@ -65,7 +65,7 @@ public:
 	void ChildInitialize();
 	void ModelInitialize();
 	// çXêVÇ∑ÇÈ
-	void Update(const DX::StepTimer& timer, 
+	void Update(
 		const DirectX::SimpleMath::Vector3& position, 
 		const DirectX::SimpleMath::Quaternion& quaternion) override;
 	// ï`âÊÇ∑ÇÈ

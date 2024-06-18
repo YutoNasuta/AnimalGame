@@ -191,9 +191,6 @@
     <ClInclude Include="Game\Ball\BallMove.h" />
     <ClInclude Include="Game\Ball\BallThrow.h" />
     <ClInclude Include="Game\Camera\TPSCamera.h" />
-    <ClInclude Include="Game\Collision\Collision.h" />
-    <ClInclude Include="Game\Collision\DisplayCollision.h" />
-    <ClInclude Include="Game\Collision\ObjMeshCollision.h" />
     <ClInclude Include="Game\CommonResources.h" />
     <ClInclude Include="Game\Enemy\Enemy.h" />
     <ClInclude Include="Game\Enemy\EnemyBase.h" />
@@ -223,6 +220,7 @@
     <ClInclude Include="Game\Scene\TitleScene.h" />
     <ClInclude Include="Game\Screen.h" />
     <ClInclude Include="Game\Stage\GenerateStage.h" />
+    <ClInclude Include="Game\Stage\StageCase.h" />
     <ClInclude Include="Game\Team\Team.h" />
     <ClInclude Include="Interface\IComponent.h" />
     <ClInclude Include="Interface\IScene.h" />
@@ -248,8 +246,6 @@
     <ClCompile Include="Game\Ball\BallMove.cpp" />
     <ClCompile Include="Game\Ball\BallThrow.cpp" />
     <ClCompile Include="Game\Camera\TPSCamera.cpp" />
-    <ClCompile Include="Game\Collision\DisplayCollision.cpp" />
-    <ClCompile Include="Game\Collision\ObjMeshCollision.cpp" />
     <ClCompile Include="Game\CommonResources.cpp" />
     <ClCompile Include="Game\Enemy\Enemy.cpp" />
     <ClCompile Include="Game\Enemy\EnemyBase.cpp" />
@@ -280,6 +276,7 @@
     <ClCompile Include="Game\Scene\SceneManager.cpp" />
     <ClCompile Include="Game\Scene\TitleScene.cpp" />
     <ClCompile Include="Game\Stage\GenerateStage.cpp" />
+    <ClCompile Include="Game\Stage\StageCase.cpp" />
     <ClCompile Include="Game\Team\Team.cpp" />
     <ClCompile Include="Libraries\Microsoft\DebugDraw.cpp" />
     <ClCompile Include="Libraries\MyLib\GridFloor.cpp" />

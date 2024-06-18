@@ -65,11 +65,9 @@ void EnemyHead::Initialize()
 /// <param name="position">ˆÊ’u</param>
 /// <param name="quaternion">‰ñ“]</param>
 void EnemyHead::Update(
-	const DX::StepTimer& timer, 
 	const DirectX::SimpleMath::Vector3& position , 
 	const DirectX::SimpleMath::Quaternion& quaternion)
 {
-	UNREFERENCED_PARAMETER(timer);
 
 	DirectX::SimpleMath::Vector3 localPosition = position;
 	DirectX::SimpleMath::Quaternion localQuaternion = m_quaternion;
@@ -81,7 +79,6 @@ void EnemyHead::Update(
 
 
 	PlayerBase::Update(
-		timer,
 		m_position,
 		m_quaternion
 	);

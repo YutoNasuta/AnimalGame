@@ -14,7 +14,7 @@
 #include"Game/Player/PlayerPart/PlayerLeftHand.h"
 #include"Game/Player/PlayerPart/PlayerRightHand.h"
 #include"Game/Player/PlayerPart/PlayerTail.h"
-
+#include"Framework/StepTimer.h"
 /// <summary>
 /// コンストラクタ
 /// </summary>

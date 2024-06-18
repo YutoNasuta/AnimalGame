@@ -231,11 +231,11 @@ void PlayScene::Update(float elapsedTime)
 	
 	m_tpsCamera->Update(m_player->GetBody()->GetPosition());
 	m_player->SetCameraQuaternion(m_tpsCamera->GetCameraRotate());
-	m_player->Update(stepTimer, position, quaternion);
+	m_player->Update( position, quaternion);
 	
 	m_ball->Update(elapsedTime);
 
-	m_enemy->Update(stepTimer, position, quaternion);
+	m_enemy->Update( position, quaternion);
 }
 
 //---------------------------------------------------------

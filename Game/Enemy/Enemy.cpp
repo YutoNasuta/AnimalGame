@@ -47,13 +47,13 @@ void Enemy::Initialize()
 }
 
 void Enemy::Update(
-    const DX::StepTimer& timer,
+ 
     const DirectX::SimpleMath::Vector3& position,
     const DirectX::SimpleMath::Quaternion& quaternion
 )
 {
     EnemyBase::Update(
-        timer,
+      
         m_position + GetInitialPosition(),
         m_quaternion
     );
