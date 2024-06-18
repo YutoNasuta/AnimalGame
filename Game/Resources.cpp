@@ -15,6 +15,7 @@ NakashiLib::Resources::Resources()
 {
 	m_commonResources = CommonResources::GetInstance();
 	CreateModels();
+	CreateSrvs();
 }
 
 /// <summary>
