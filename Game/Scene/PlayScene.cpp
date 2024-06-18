@@ -129,8 +129,12 @@ void PlayScene::Initialize()
 	m_stage = std::make_unique<GenerateStage>();
 	m_stage->Initialize(device , context);
 
-	m_ray = std::make_unique<NakashiLib::CreateRay>();
-	m_ray->Initialize(context , 1.0f);
+	for (int i = 0; i < 2; i++)
+	{
+		m_ray[i] = std::make_unique<NakashiLib::CreateRay>();
+		m_ray[i]->Initialize(context, 1.0f);
+	}
+	
 
 }
 
@@ -188,20 +192,21 @@ void PlayScene::Update(float elapsedTime)
 	//DirectX::SimpleMath::Ray ray{ startVec , DirectX::SimpleMath::Vector3::Down };
 	//DirectX::SimpleMath::Ray Ballray{ startVec2 , DirectX::SimpleMath::Vector3::Down };
 
-	m_ray->Update(m_player->GetPosition());
+	m_ray[0]->Update(m_player->GetPosition());
+	m_ray[1]->Update(m_ball->GetPosition());
 
 	DirectX::SimpleMath::Vector3 hitposition;
 	DirectX::SimpleMath::Vector3 normal;
 	int number;
 	int ishit;
 
-	/*DirectX::SimpleMath::Vector3 hitposition2;
+	DirectX::SimpleMath::Vector3 hitposition2;
 	DirectX::SimpleMath::Vector3 normal2;
 	int number2;
-	int ishit2;*/
+	int ishit2;
 
 	
-	ishit = m_stage->GetCollisionMesh()->IntersectRay(m_ray->GetRay(), &hitposition, &normal, &number);
+	ishit = m_stage->GetCollisionMesh()->IntersectRay(m_ray[0]->GetRay(), &hitposition, &normal, &number);
 
 	if (ishit)
 	{
@@ -211,13 +216,13 @@ void PlayScene::Update(float elapsedTime)
 		m_player->SetPosition(hitposition + DirectX::SimpleMath::Vector3(0.0f,0.4f,0.0f));
 	}
 
-	/*ishit2 = m_stage->GetCollisionMesh()->IntersectRay(Ballray, &hitposition2, &normal2, &number2);
+	ishit2 = m_stage->GetCollisionMesh()->IntersectRay(m_ray[1]->GetRay(), &hitposition2, &normal2, &number2);
 
 	if (ishit2)
 	{
 		
 		m_ball->SetGround(hitposition2);
-	}*/
+	}
 
 	//	ステップタイマーの取得
 	const DX::StepTimer& stepTimer = *(m_commonResources->GetStepTimer());

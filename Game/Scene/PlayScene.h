@@ -45,7 +45,6 @@ private:
 	// 共通リソース
 	CommonResources* m_commonResources;
 
-	
 
 	// 格子床
 	std::unique_ptr<mylib::GridFloor> m_gridFloor;
@@ -84,7 +83,7 @@ private:
 	DirectX::SimpleMath::Vector3 m_rayPosition;
 	DirectX::SimpleMath::Vector3 m_ballRayPosition;
 
-	std::unique_ptr<NakashiLib::CreateRay> m_ray;
+	std::unique_ptr<NakashiLib::CreateRay> m_ray[2];
 
 
 public:
