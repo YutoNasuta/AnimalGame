@@ -63,6 +63,7 @@ public:
 	void Initialize() override;
 	// 子パーツ初期化用
 	void ChildInitialize();
+
 	void ModelInitialize();
 	// 更新する
 	void Update(

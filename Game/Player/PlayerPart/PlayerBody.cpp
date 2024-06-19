@@ -75,13 +75,13 @@ void PlayerBody::Initialize()
 /// <param name="resources">共通リソース</param>
 void PlayerBody::ChildInitialize()
 {
-	// 腕を子オブジェクトに
-	auto rightHand =
-		std::make_unique<PlayerRightHand>(
-			this,
-			DirectX::SimpleMath::Vector3(-1.0f, 0.5f, 0.0f),
-			DirectX::SimpleMath::Quaternion::Identity);
-	m_rightHand = rightHand.get();
+	
+	// 右腕を子オブジェクトに
+	auto rightHand = std::make_unique<PlayerRightHand>(
+		this,
+		DirectX::SimpleMath::Vector3(-1.0f, 0.5f, 0.0f),
+		DirectX::SimpleMath::Quaternion::Identity);
+	m_rightHand =(rightHand.get());
 	SetChild(std::move(rightHand));
 
 	auto leftHand =

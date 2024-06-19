@@ -239,6 +239,9 @@
     <ClInclude Include="Game\Stage\StageCase.h">
       <Filter>Game\Stage</Filter>
     </ClInclude>
+    <ClInclude Include="Interface\IPlayerFactory.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />

@@ -72,10 +72,10 @@ void Player::Initialize()
 	auto body = std::make_unique<PlayerBody>(				// プレイヤーボディを作成
 		this,
 		DirectX::SimpleMath::Vector3(0.0f, 0.0f, 0.0f),
-		DirectX::SimpleMath::Quaternion::Identity
-	);
-	m_body = body.get();									// 呼び出し用bodyに格納
-	SetChild(std::move(body));					// プレイヤーの子にbodyを設定
+		DirectX::SimpleMath::Quaternion::Identity);
+	m_body = body.get();
+	SetChild(std::move(body));							// プレイヤーの子にbodyを設定
+	
 	
 	m_standing = std::make_unique<PlayerStanding>(this);		// 立ち状態
 	m_jumping = std::make_unique<PlayerJumping>(this);		// ジャンプ状態

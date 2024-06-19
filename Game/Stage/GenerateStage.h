@@ -43,15 +43,24 @@ public:
 		ID3D11Device* device,
 		ID3D11DeviceContext* context);
 
-	void Render(DirectX::CommonStates* states,const DirectX::SimpleMath::Matrix& view, const DirectX::SimpleMath::Matrix& projection);
+	void Render(
+		DirectX::CommonStates* states,
+		const DirectX::SimpleMath::Matrix& view, 
+		const DirectX::SimpleMath::Matrix& projection);
 
+public:		// プロパティ
 	float GetLandScape(int height, int width) { return m_landScape[height][width]; }
 
 	NakashiLib::CollisionMesh* GetCollisionMesh() { return m_collisionMesh.get(); }
+	StageCase* GetStageCase(int number) { return m_stageCase[number].get(); }
 
+private:
+	// パーリンノイズ作成
 	void CreatePerlinNoise();
-
-	void CreateVertex(ID3D11Device* device, ID3D11DeviceContext* context);
-
+	// 頂点作成
+	void CreateVertex(
+		ID3D11Device* device,
+		ID3D11DeviceContext* context);
+	// ステージの外側作成
 	void CreateStageCase();
 };

@@ -173,10 +173,10 @@ void GenerateStage::CreateStageCase()
 
 	// 各StageCaseを各辺の中心に配置
 	DirectX::SimpleMath::Vector3 stagePositions[STAGE_QUANTITY] = {
-		{static_cast<float>(LAND_WIDTH) * m_scale / 2, 0.0f, 0.0f}, // 上辺の中心
-		{static_cast<float>(LAND_WIDTH) * m_scale / 2, 0.0f, (static_cast<float>(LAND_HEIGHT) - 1) * m_scale}, // 下辺の中心
-		{0.0f, 0.0f, static_cast<float>(LAND_HEIGHT) * m_scale / 2}, // 左辺の中心
-		{(static_cast<float>(LAND_WIDTH) - 1) * m_scale, 0.0f, static_cast<float>(LAND_HEIGHT) * m_scale / 2} // 右辺の中心
+		{static_cast<float>(LAND_WIDTH) * m_scale / 2, static_cast<float>(m_correctionHeight) * m_scale / 3, 0.0f},												// 上辺の中心
+		{static_cast<float>(LAND_WIDTH) * m_scale / 2, static_cast<float>(m_correctionHeight) * m_scale / 3, (static_cast<float>(LAND_HEIGHT) - 1) * m_scale},  // 下辺の中心
+		{0.0f, static_cast<float>(m_correctionHeight) * m_scale / 3, static_cast<float>(LAND_HEIGHT) * m_scale / 2},											// 左辺の中心
+		{(static_cast<float>(LAND_WIDTH) - 1) * m_scale, static_cast<float>(m_correctionHeight) * m_scale / 3, static_cast<float>(LAND_HEIGHT) * m_scale / 2}   // 右辺の中心
 	};
 
 	// 各辺に応じたBoxのサイズを作成
@@ -185,7 +185,7 @@ void GenerateStage::CreateStageCase()
 		{static_cast<float>(LAND_HEIGHT) * m_scale, static_cast<float>(m_correctionHeight) * m_scale, 5.0f},
 		{static_cast<float>(LAND_HEIGHT) * m_scale, static_cast<float>(m_correctionHeight) * m_scale, 5.0f},
 		{5.0f, static_cast<float>(m_correctionHeight) * m_scale, static_cast<float>(LAND_WIDTH) * m_scale},
-		{5.0f, static_cast<float>(m_correctionHeight) * m_scale, static_cast<float>(LAND_WIDTH) * m_scale} // 壁のサイズを適宜調整
+		{5.0f, static_cast<float>(m_correctionHeight) * m_scale, static_cast<float>(LAND_WIDTH) * m_scale}		
 	};
 
 	// ステージの外側の場所を作る

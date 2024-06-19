@@ -25,6 +25,8 @@
 #include"Libraries/NakashiLib/CollisionMesh.h"
 #include"Libraries/NakashiLib/CreateRay.h"
 
+const DirectX::SimpleMath::Vector3 PlayScene::HOME_POSITION = DirectX::SimpleMath::Vector3(10.0f, 10.0f, 10.0f);
+
 //---------------------------------------------------------
 // コンストラクタ
 //---------------------------------------------------------
@@ -113,6 +115,8 @@ void PlayScene::Initialize()
 		DirectX::SimpleMath::Quaternion::CreateFromAxisAngle(DirectX::SimpleMath::Vector3::UnitY, DirectX::XMConvertToRadians(0.0f)));
 	
 	m_player->Initialize();
+	m_player->SetPosition(DirectX::SimpleMath::Vector3(HOME_POSITION));
+
 	// tpsカメラを作る
 	m_tpsCamera = std::make_unique<TPSCamera>(m_player->GetPosition());
 
@@ -134,6 +138,8 @@ void PlayScene::Initialize()
 		m_ray[i] = std::make_unique<NakashiLib::CreateRay>();
 		m_ray[i]->Initialize(context, 1.0f);
 	}
+	
+
 	
 
 }
@@ -280,7 +286,7 @@ void PlayScene::Render()
 #endif
 
 	m_ball->Render(m_tpsCamera->GetViewMatrix(), m_tpsCamera->GetProjectionMatrix());
-	//m_player->Render(m_tpsCamera->GetViewMatrix() , m_tpsCamera->GetProjectionMatrix());
+
 
 	
 	m_player->Render(m_tpsCamera->GetViewMatrix(), m_tpsCamera->GetProjectionMatrix());

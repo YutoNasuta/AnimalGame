@@ -223,6 +223,7 @@
     <ClInclude Include="Game\Stage\StageCase.h" />
     <ClInclude Include="Game\Team\Team.h" />
     <ClInclude Include="Interface\IComponent.h" />
+    <ClInclude Include="Interface\IPlayerFactory.h" />
     <ClInclude Include="Interface\IScene.h" />
     <ClInclude Include="Interface\IState.h" />
     <ClInclude Include="Libraries\Microsoft\DebugDraw.h" />
