@@ -9,12 +9,12 @@
 #include"Interface/IComponent.h"
 #include"Libraries/NakashiLib/ResourcesManager.h"
 #include"Game/CommonResources.h"
-#include"Game/Player/PlayerPart/PlayerHead.h"
-#include"Game/Player/PlayerPart/PlayerLeftHand.h"
-#include"Game/Player/PlayerPart/PlayerRightHand.h"
-#include"Game/Player/PlayerPart/PlayerLeg.h"
+#include"Game/Enemy/Parts/EnemyHead.h"
+#include"Game/Enemy/Parts/EnemyLeftHand.h"
+#include"Game/Enemy/Parts/EnemyRightHand.h"
+#include"Game/Enemy/Parts/EnemyLeg.h"
 #include"Libraries/NakashiLib/InputManager.h"
-#include"Game/Player/PlayerPart/PlayerTail.h"
+#include"Game/Enemy/Parts/EnemyTail.h"
 
 /// <summary>
 /// コンストラクタ
@@ -27,9 +27,9 @@ EnemyBody::EnemyBody(
 	const DirectX::SimpleMath::Vector3& position,
 	const DirectX::SimpleMath::Quaternion& quaternion
 )
-	: PlayerBase(parent , position ,quaternion),
+	: EnemyBase(parent , position ,quaternion),
 	m_commonResources{},
-	m_partID{PlayerBase::PartID::BODY},
+	m_partID{EnemyBase::PartID::BODY},
 	m_model{},
 	m_position{},
 	m_velocity{},
@@ -68,7 +68,7 @@ void EnemyBody::Initialize()
 	ChildInitialize();
 
 	// 基底クラスのInitialize呼び出し
-	PlayerBase::Initialize(m_nodeNumber , m_model);
+	EnemyBase::Initialize(m_nodeNumber , m_model);
 }
 
 /// <summary>
@@ -79,7 +79,7 @@ void EnemyBody::ChildInitialize()
 {
 	// 腕を子オブジェクトに
 	auto rightHand =
-		std::make_unique<PlayerRightHand>(
+		std::make_unique<EnemyRightHand>(
 			this,
 			DirectX::SimpleMath::Vector3(-1.0f, 0.5f, 0.0f),
 			DirectX::SimpleMath::Quaternion::Identity);
@@ -87,7 +87,7 @@ void EnemyBody::ChildInitialize()
 	SetChild(std::move(rightHand));
 
 	auto leftHand =
-		std::make_unique<PlayerLeftHand>(
+		std::make_unique<EnemyLeftHand>(
 			this,
 			DirectX::SimpleMath::Vector3(1.0f, 0.5f, 0.0f),
 			DirectX::SimpleMath::Quaternion::Identity);
@@ -95,7 +95,7 @@ void EnemyBody::ChildInitialize()
 	SetChild(std::move(leftHand));
 
 	// 足を子オブジェクトに
-	auto leg = std::make_unique<PlayerLeg>(
+	auto leg = std::make_unique<EnemyLeg>(
 		this,
 		DirectX::SimpleMath::Vector3(0.0f, -0.6f, 0.0f),
 		DirectX::SimpleMath::Quaternion::Identity);
@@ -103,7 +103,7 @@ void EnemyBody::ChildInitialize()
 	SetChild(std::move(leg));
 
 	// 頭を子オブジェクトに
-	auto Head = std::make_unique<PlayerHead>(
+	auto Head = std::make_unique<EnemyHead>(
 		this,
 		DirectX::SimpleMath::Vector3(0.0f, 0.9f, 0.0f),
 		DirectX::SimpleMath::Quaternion::Identity);
@@ -112,7 +112,7 @@ void EnemyBody::ChildInitialize()
 	SetChild(std::move(Head));
 
 	// しっぽを子オブジェクトに
-	auto Tail = std::make_unique<PlayerTail>(
+	auto Tail = std::make_unique<EnemyTail>(
 		this,
 		DirectX::SimpleMath::Vector3(0.0f, -0.5f, -0.8f),
 		DirectX::SimpleMath::Quaternion::Identity);
@@ -125,13 +125,13 @@ void EnemyBody::ChildInitialize()
 /// </summary>
 void EnemyBody::ModelInitialize()
 {
-	//m_commonResources->GetResourcesManager()->CreateModel(L"PlayerBody", L"PlayerBody.cmo");
-	//m_commonResources->GetResourcesManager()->CreateModel(L"PlayerLeftHand", L"PlayerLeftHand.cmo");
-	//m_commonResources->GetResourcesManager()->CreateModel(L"PlayerHead", L"PlayerHead.cmo");
-	//m_commonResources->GetResourcesManager()->CreateModel(L"PlayerLeg", L"PlayerLeg.cmo");
-	//m_commonResources->GetResourcesManager()->CreateModel(L"PlayerRightHand", L"PlayerRightHand.cmo");
-	//m_commonResources->GetResourcesManager()->CreateModel(L"PlayerTail", L"PlayerTail.cmo");
-	m_model = m_commonResources->GetResourcesManager()->GetModel(L"PlayerBody");
+	//m_commonResources->GetResourcesManager()->CreateModel(L"EnemyBody", L"EnemyBody.cmo");
+	//m_commonResources->GetResourcesManager()->CreateModel(L"EnemyLeftHand", L"EnemyLeftHand.cmo");
+	//m_commonResources->GetResourcesManager()->CreateModel(L"EnemyHead", L"EnemyHead.cmo");
+	//m_commonResources->GetResourcesManager()->CreateModel(L"EnemyLeg", L"EnemyLeg.cmo");
+	//m_commonResources->GetResourcesManager()->CreateModel(L"EnemyRightHand", L"EnemyRightHand.cmo");
+	//m_commonResources->GetResourcesManager()->CreateModel(L"EnemyTail", L"EnemyTail.cmo");
+	m_model = m_commonResources->GetResourcesManager()->GetModel(L"EnemyBody");
 }
 
 /// <summary>
@@ -153,7 +153,7 @@ void EnemyBody::Update(
 
 	m_quaternion = quaternion;			// 現在の回転角を更新する
 
-	PlayerBase::Update(
+	EnemyBase::Update(
 		m_position,
 		m_quaternion);
 
@@ -175,7 +175,7 @@ const DirectX::SimpleMath::Matrix& view ,
 const DirectX::SimpleMath::Matrix& projection
 )
 {
-	PlayerBase::Render(m_worldMatrix, view, projection);
+	EnemyBase::Render(m_worldMatrix, view, projection);
 }
 
 /// <summary>

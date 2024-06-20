@@ -33,13 +33,21 @@ void NakashiLib::Resources::CreateModels()
 {
 	auto ResourcesManager = m_commonResources->GetResourcesManager();
 
-	ResourcesManager->CreateModel(L"PlayerBody", L"PlayerBody.cmo");
-	ResourcesManager->CreateModel(L"PlayerLeftHand", L"PlayerLeftHand.cmo");
-	ResourcesManager->CreateModel(L"PlayerHead", L"PlayerHead.cmo");
-	ResourcesManager->CreateModel(L"PlayerLeg", L"PlayerLeg.cmo");
-	ResourcesManager->CreateModel(L"PlayerRightHand", L"PlayerRightHand.cmo");
-	ResourcesManager->CreateModel(L"PlayerTail", L"PlayerTail.cmo");
+	// プレイヤーのパーツ生成
+	ResourcesManager->CreateModel(L"PlayerBody",		 L"Player/PlayerBody.cmo");
+	ResourcesManager->CreateModel(L"PlayerLeftHand",	 L"Player/PlayerLeftHand.cmo");
+	ResourcesManager->CreateModel(L"PlayerHead",		 L"Player/PlayerHead.cmo");
+	ResourcesManager->CreateModel(L"PlayerLeg",			 L"Player/PlayerLeg.cmo");
+	ResourcesManager->CreateModel(L"PlayerRightHand",	 L"Player/PlayerRightHand.cmo");
+	ResourcesManager->CreateModel(L"PlayerTail",		 L"Player/PlayerTail.cmo");
 
+	// エネミーのパーツ生成
+	ResourcesManager->CreateModel(L"EnemyBody",		     L"Enemy/EnemyBody.cmo");
+	ResourcesManager->CreateModel(L"EnemyLeftHand",		 L"Enemy/EnemyLeftHand.cmo");
+	ResourcesManager->CreateModel(L"EnemyRightHand",	 L"Enemy/EnemyRightHand.cmo");
+	ResourcesManager->CreateModel(L"EnemyHead",			 L"Enemy/EnemyHead.cmo");
+	ResourcesManager->CreateModel(L"EnemyLeg",			 L"Enemy/EnemyLeg.cmo");
+	ResourcesManager->CreateModel(L"EnemyTail",			 L"Enemy/EnemyTail.cmo");
 }
 
 /// <summary>

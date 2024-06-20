@@ -59,7 +59,7 @@ public:
 	// 初期化
 	virtual void Initialize();
 	// 初期化
-	virtual void Initialize(DirectX::Model* model);
+	virtual void Initialize(int nodeNumber ,DirectX::Model* model);
 	// 更新
 	inline virtual void Update(
 		const DirectX::SimpleMath::Vector3& position, 
@@ -90,6 +90,8 @@ public:
 
 
 private:
+	// チーム番号
+	int m_teamNumber;
 	// 共通リソース
 	CommonResources* m_commonResources;
 	// モデル

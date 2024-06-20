@@ -23,8 +23,12 @@ Game::Game() noexcept(false)
     m_inputManager{},
     m_sceneManager{},
     m_resourceManager{},
-    m_fullscreen{false}
+    m_fullscreen{false},
+    m_graphics{}
 {
+    // グラフィックスのインスタンスを取得
+    m_graphics = Graphics::GetInstance();
+
     m_deviceResources = std::make_unique<DX::DeviceResources>();
     // TODO: Provide parameters for swapchain format, depth/stencil format, and backbuffer count.
     //   Add DX::DeviceResources::c_AllowTearing to opt-in to variable rate displays.
@@ -92,7 +96,7 @@ void Game::Initialize(HWND window, int width, int height)
     m_sceneManager = std::make_unique<SceneManager>();
     m_sceneManager->Initialize();
 
-    
+    m_graphics->SetScreenSize(width, height);
 
     // ★追記ココまで↑↑↑★
 }

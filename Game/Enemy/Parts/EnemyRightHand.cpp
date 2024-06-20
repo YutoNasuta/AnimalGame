@@ -9,7 +9,7 @@
 #include"Interface/IComponent.h"
 #include"Libraries/NakashiLib/ResourcesManager.h"
 #include"Game/CommonResources.h"
-#include"Game/Player/PlayerPart/PlayerHead.h"
+#include"Game/Enemy/Parts/EnemyHead.h"
 
 
 /// <summary>
@@ -23,9 +23,9 @@ EnemyRightHand::EnemyRightHand(
 	const DirectX::SimpleMath::Vector3& position,
 	const DirectX::SimpleMath::Quaternion& quaternion
 )
-: PlayerBase(parent , position ,quaternion),
+: EnemyBase(parent , position ,quaternion),
 	m_commonResources{},
-	m_partID{PlayerBase::PartID::HAND_RIGHT},
+	m_partID{EnemyBase::PartID::HAND_RIGHT},
 	m_model{},
 	m_position{},
 	m_velocity{},
@@ -50,9 +50,9 @@ EnemyRightHand::~EnemyRightHand()
 /// <param name="resources"></param>
 void EnemyRightHand::Initialize()
 {
-	m_model = m_commonResources->GetResourcesManager()->GetModel(L"PlayerRightHand");	//モデル取得
+	m_model = m_commonResources->GetResourcesManager()->GetModel(L"EnemyRightHand");	//モデル取得
 	
-	PlayerBase::Initialize(m_nodeNumber , m_model);	// 基底クラスのInitialize呼び出し
+	EnemyBase::Initialize(m_nodeNumber , m_model);	// 基底クラスのInitialize呼び出し
 }
 
 /// <summary>
@@ -74,7 +74,7 @@ void EnemyRightHand::Update(
 
 	m_quaternion = quaternion;			// 現在の回転角を更新する
 
-	PlayerBase::Update(			//ベースを更新
+	EnemyBase::Update(			//ベースを更新
 		m_position,
 		m_quaternion);
 
@@ -98,7 +98,7 @@ const DirectX::SimpleMath::Matrix& view ,
 const DirectX::SimpleMath::Matrix& projection
 )
 {
-	PlayerBase::Render(m_worldMatrix, view, projection);
+	EnemyBase::Render(m_worldMatrix, view, projection);
 }
 
 /// <summary>

@@ -185,6 +185,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Framework\DeviceResources.h" />
+    <ClInclude Include="Framework\Graphics.h" />
     <ClInclude Include="Game\Resources.h" />
     <ClInclude Include="Framework\StepTimer.h" />
     <ClInclude Include="Game\Ball\Ball.h" />
@@ -243,6 +244,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Framework\DeviceResources.cpp" />
+    <ClCompile Include="Framework\Graphics.cpp" />
     <ClCompile Include="Game\Ball\Ball.cpp" />
     <ClCompile Include="Game\Ball\BallMove.cpp" />
     <ClCompile Include="Game\Ball\BallThrow.cpp" />

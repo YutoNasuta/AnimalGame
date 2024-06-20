@@ -5,11 +5,11 @@
 // <概要>		　　プレイヤーのしっぽパーツ
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #pragma once
-#include"Game/Player/PlayerBase.h"
+#include"Game/Enemy/EnemyBase.h"
 #include"Framework/DeviceResources.h"
 class CommonResources;
 
-class EnemyTail : public PlayerBase
+class EnemyTail : public EnemyBase
 {
 public:
 

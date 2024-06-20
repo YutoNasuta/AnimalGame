@@ -5,11 +5,11 @@
 // <概要>		　　プレイヤーの頭パーツ
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #pragma once
-#include"Game/Player/PlayerBase.h"
+#include"Game/Enemy/EnemyBase.h"
 #include"Framework/DeviceResources.h"
 class CommonResources;
 
-class EnemyHead : public PlayerBase
+class EnemyHead : public EnemyBase
 {
 public:
 

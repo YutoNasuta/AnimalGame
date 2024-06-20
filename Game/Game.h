@@ -13,8 +13,8 @@
 #include "Game/Scene/SceneManager.h"
 #include "Libraries/NakashiLib/DebugString.h"
 #include "Libraries/NakashiLib/InputManager.h"
-#include"Libraries/NakashiLib/ResourcesManager.h"
-
+#include "Libraries/NakashiLib/ResourcesManager.h"
+#include "Framework/Graphics.h"
 // A basic game implementation that creates a D3D11 device and
 // provides a game loop.
 class Game final : public DX::IDeviceNotify
@@ -100,6 +100,9 @@ private:
 
     // リソースマネージャー
     std::unique_ptr<NakashiLib::ResourcesManager> m_resourceManager;
+
+    // グラフィックス
+    Graphics* m_graphics;
 
    
 

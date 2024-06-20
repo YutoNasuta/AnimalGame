@@ -42,7 +42,7 @@ void TPSCamera::Update(
 	m_mousePointer->Update();
 
 	// targetの位置を更新する
-	m_target = DirectX::SimpleMath::Vector3(newTarget.x, newTarget.y * 0.7f , newTarget.z);
+	m_target = DirectX::SimpleMath::Vector3(newTarget.x, newTarget.y + 3 , newTarget.z);
 
 	// カメラ座標を計算する
 	CalculateEyePosition(m_rotate);

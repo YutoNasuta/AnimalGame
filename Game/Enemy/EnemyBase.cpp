@@ -9,6 +9,7 @@
 #include"Game/CommonResources.h"
 #include"Framework/DeviceResources.h"
 #include "Libraries/Microsoft/DebugDraw.h"
+#include "Game/Team/Team.h"
 
 /// <summary>
 ///  コンストラクタ
@@ -22,6 +23,7 @@ EnemyBase::EnemyBase(
 	const DirectX::SimpleMath::Quaternion& quaternion
 )
 	:
+	m_teamNumber(0),
 	m_commonResources{},
 	m_model{},
 	m_parent{parent},
@@ -56,11 +58,13 @@ void EnemyBase::Initialize()
 /// </summary>
 /// <param name="model">モデルの取得</param>
 void EnemyBase::Initialize(
+	int nodeNumber,
 	DirectX::Model* model
 )
 {
 	// モデルを設定
 	m_model = model;
+	m_teamNumber = Team::GetTeamNumberForNodeNumber(nodeNumber);
 }
 
 /// <summary>

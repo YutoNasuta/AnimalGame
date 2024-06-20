@@ -8,12 +8,13 @@
 #include"pch.h"
 
 class CommonResources;
-
+class Graphics;
 class StageCase
 {
 private:
 	// 共通ステート
 	CommonResources* m_commonResources;
+	Graphics* m_graphics;
 	// バウンディングボックス
 	DirectX::BoundingBox m_stageCaseBoundingBox;
 

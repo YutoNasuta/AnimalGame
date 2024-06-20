@@ -22,9 +22,9 @@ EnemyHead::EnemyHead(
 	const DirectX::SimpleMath::Vector3& position,
 	const DirectX::SimpleMath::Quaternion& quaternion
 )
-	: PlayerBase(parent , position ,quaternion),
+	: EnemyBase(parent , position ,quaternion),
 	m_commonResources{},
-	m_partID{PlayerBase::PartID::HEAD},
+	m_partID{EnemyBase::PartID::HEAD},
 	m_model{},
 	m_position{},
 	m_velocity{},
@@ -52,9 +52,9 @@ void EnemyHead::Initialize()
 {
 	
 
-	m_model = m_commonResources->GetResourcesManager()->GetModel(L"PlayerHead");
+	m_model = m_commonResources->GetResourcesManager()->GetModel(L"EnemyHead");
 
-	PlayerBase::Initialize(m_nodeNumber , m_model);
+	EnemyBase::Initialize(m_nodeNumber , m_model);
 
 }
 
@@ -78,7 +78,7 @@ void EnemyHead::Update(
 	m_quaternion = quaternion;			// Œ»İ‚Ì‰ñ“]Šp‚ğXV‚·‚é
 
 
-	PlayerBase::Update(
+	EnemyBase::Update(
 		m_position,
 		m_quaternion
 	);
@@ -100,7 +100,7 @@ const DirectX::SimpleMath::Matrix& view ,
 const DirectX::SimpleMath::Matrix& projection
 )
 {
-	PlayerBase::Render( m_worldMatrix, view, projection);
+	EnemyBase::Render( m_worldMatrix, view, projection);
 }
 
 /// <summary>

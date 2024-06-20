@@ -21,7 +21,10 @@ Enemy::Enemy(IComponent* parent,
     m_position{position},
     m_velocity{},
     Number{ 1 }, 
-    Debug{ 1 }
+    Debug{ 1 },
+    m_ballTaking{},
+    m_body{},
+    m_mass{}
 {
     m_commonResources = CommonResources::GetInstance();
 }

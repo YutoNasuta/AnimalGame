@@ -242,6 +242,9 @@
     <ClInclude Include="Interface\IPlayerFactory.h">
       <Filter>Interface</Filter>
     </ClInclude>
+    <ClInclude Include="Framework\Graphics.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -382,6 +385,9 @@
     </ClCompile>
     <ClCompile Include="Game\Stage\StageCase.cpp">
       <Filter>Game\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Graphics.cpp">
+      <Filter>Framework</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

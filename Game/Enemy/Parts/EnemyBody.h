@@ -5,18 +5,18 @@
 // <概要>			プレイヤーの胴体パーツ
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #pragma once
-#include"Game/Player/PlayerBase.h"
+#include"Game/Enemy/EnemyBase.h"
 #include"Framework/DeviceResources.h"
 
 // 前方宣言
 class CommonResources;
-class PlayerRightHand;
-class PlayerLeftHand;
-class PlayerLeg;
-class PlayerHead;
-class PlayerTail;
+class EnemyRightHand;
+class EnemyLeftHand;
+class EnemyLeg;
+class EnemyHead;
+class EnemyTail;
 
-class EnemyBody : public PlayerBase
+class EnemyBody : public EnemyBase
 {
 public:
 
@@ -46,11 +46,11 @@ public:
 
 
 	// 子取得用
-	PlayerRightHand* GetRightHand() const { return m_rightHand; }
-	PlayerLeftHand* GetLeftHand() const { return m_leftHand; }
-	PlayerLeg* GetLeg() const { return m_leg; }
-	PlayerHead* GetHead() const { return m_head; }
-	PlayerTail* GetTail() const { return m_tail; }
+	EnemyRightHand* GetRightHand() const { return m_rightHand; }
+	EnemyLeftHand* GetLeftHand() const { return m_leftHand; }
+	EnemyLeg* GetLeg() const { return m_leg; }
+	EnemyHead* GetHead() const { return m_head; }
+	EnemyTail* GetTail() const { return m_tail; }
 
 public:
 	// コンストラクタ
@@ -98,10 +98,10 @@ private:
 
 
 	// bodyの子取得用
-	PlayerRightHand* m_rightHand;
-	PlayerLeftHand* m_leftHand;
-	PlayerLeg* m_leg;
-	PlayerHead* m_head;
-	PlayerTail* m_tail;
+	EnemyRightHand* m_rightHand;
+	EnemyLeftHand* m_leftHand;
+	EnemyLeg* m_leg;
+	EnemyHead* m_head;
+	EnemyTail* m_tail;
 	
 };

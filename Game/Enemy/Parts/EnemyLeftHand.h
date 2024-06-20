@@ -5,11 +5,11 @@
 // <概要>		　　プレイヤーの左手パーツ
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #pragma once
-#include"Game/Player/PlayerBase.h"
+#include"Game/Enemy/EnemyBase.h"
 #include"Framework/DeviceResources.h"
 class CommonResources;
 
-class EnemyLeftHand : public PlayerBase
+class EnemyLeftHand : public EnemyBase
 {
 public:
 

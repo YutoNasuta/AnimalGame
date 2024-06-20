@@ -5,11 +5,11 @@
 // <概要>		　　プレイヤーの足パーツ
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #pragma once
-#include"Game/Player/PlayerBase.h"
+#include"Game/Enemy/EnemyBase.h"
 #include"Framework/DeviceResources.h"
 class CommonResources;
 
-class EnemyLeg : public PlayerBase
+class EnemyLeg : public EnemyBase
 {
 public:
 

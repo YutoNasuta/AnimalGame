@@ -9,12 +9,14 @@
 #include"Game/CommonResources.h"
 #include"Framework/DeviceResources.h"
 #include "Libraries/Microsoft/DebugDraw.h"
+#include"Framework/Graphics.h"
 
 StageCase::StageCase()
 	:
 	m_stageCaseBoundingBox{}
 {
 	m_commonResources = CommonResources::GetInstance();
+	m_graphics = Graphics::GetInstance();
 }
 
 StageCase::~StageCase()
