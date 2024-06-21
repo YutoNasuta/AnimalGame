@@ -1,24 +1,27 @@
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // <製作者>			NakashimaYuto	
 // <製作開始日>		2024/06/01
-// <file>			PlayerRunning.h
-// <概要>		　　プレイヤーの走りステート
+// <file>			PlayerThrow.h
+// <概要>		　　プレイヤーの投げるステート
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #pragma once
 #include"pch.h"
 #include"Interface/IState.h"
+#include"Game/Player/Player.h"
+#include"Game/Scene/PlayScene.h"
 
 // 前方宣言
 class Player;
-class CommonResources;
+class PlayerStateExecutor;
+class PlayerStateBuilder;
 
-class PlayerRunning : public IState
+class PlayerThrow : public IState
 {
 public:
 	// コンストラクタ
-	PlayerRunning(Player* player);
+	PlayerThrow(Player* player, PlayerStateExecutor* executor);
 	// デストラクタ
-	~PlayerRunning();
+	~PlayerThrow();
 	// 初期化
 	void Initialize() override;
 	// 立ち状態
@@ -31,24 +34,31 @@ public:
 	void OnExit() override;
 	// 後始末
 	void Finalize() override;
-	// キーでState変更
+	// State変更
 	void ChangeStateKey(const DirectX::Keyboard::State& keyboardStateTracker);
-	// 移動処理
-	void Moving(const DirectX::Keyboard::State& keyboardStateTracker);
-	// 角度を変える
-	void SlerpRotate(const DirectX::SimpleMath::Vector3 velocity);
-
-	// プレイヤーの子パーツ達の変化
+	// ボールを投げる動作
+	void BallThrowMove();
+	// 向きだけ変わる処理
+	void ChangeDirectionMove(const DirectX::Keyboard::State& keyboardStateTracker);
+	// 線形保管用
+	void SlarpRotate(DirectX::SimpleMath::Vector3 direction);
+	// 力をチャージ
+	void AddForce();
+	// 子の動き
 	void MoveChild();
 	// 手の動き
 	void MoveHand();
-	// 胴の動き
-	void MoveBody();
 	// しっぽの動き
 	void MoveTail();
-	
+
 private:
+	// プレイヤー
 	Player* m_player;
 	// 共通リソース
 	CommonResources* m_commonResources;
+	// 実行クラス
+	PlayerStateExecutor* m_stateExecutor;
+	// 他ステートのビルダー
+	PlayerStateBuilder* m_stateBuilder;
+
 };

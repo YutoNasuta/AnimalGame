@@ -24,6 +24,7 @@
 #include"Game/Stage/GenerateStage.h"
 #include"Libraries/NakashiLib/CollisionMesh.h"
 #include"Libraries/NakashiLib/CreateRay.h"
+#include"Game/Player/StatePattern/PlayerStateBuilder.h"
 
 const DirectX::SimpleMath::Vector3 PlayScene::HOME_POSITION = DirectX::SimpleMath::Vector3(10.0f, 10.0f, 10.0f);
 
@@ -218,7 +219,7 @@ void PlayScene::Update(float elapsedTime)
 	{
 		m_ground.y = hitposition.y;
 		m_player->SetGround(m_ground);
-		if(m_player->GetNowState() != m_player->GetJumping())
+		if(m_player->GetState()->GetCurrentState() != m_player->GetStateList()->GetJumping())
 		m_player->SetPosition(hitposition + DirectX::SimpleMath::Vector3(0.0f,0.4f,0.0f));
 	}
 
@@ -268,11 +269,11 @@ void PlayScene::Render()
 	debugString->AddString("BallTake %f", m_player->GetBallTakeFlag());
 
 
-	if (m_player->GetNowState() == m_player->GetStanding()) { debugString->AddString("P::standing"); }
-	else if (m_player->GetNowState() == m_player->GetJumping()) { debugString->AddString("P::Jumping"); }
-	else if (m_player->GetNowState() == m_player->GetRunning()) { debugString->AddString("P::Runnning"); }
-	else if (m_player->GetNowState() == m_player->GetTake()) { debugString->AddString("P::Take"); }
-	else if (m_player->GetNowState() == m_player->GetThrow()) { debugString->AddString("P::Throw"); }
+	//if (m_player->GetNowState() == m_player->GetStanding()) { debugString->AddString("P::standing"); }
+	//else if (m_player->GetNowState() == m_player->GetJumping()) { debugString->AddString("P::Jumping"); }
+	//else if (m_player->GetNowState() == m_player->GetRunning()) { debugString->AddString("P::Runnning"); }
+	//else if (m_player->GetNowState() == m_player->GetTake()) { debugString->AddString("P::Take"); }
+	//else if (m_player->GetNowState() == m_player->GetThrow()) { debugString->AddString("P::Throw"); }
 
 
 	if (m_ball->GetNowState() == m_ball->GetMove()) { debugString->AddString("B::Move"); }

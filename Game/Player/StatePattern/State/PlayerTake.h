@@ -1,8 +1,8 @@
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // <製作者>			NakashimaYuto	
 // <製作開始日>		2024/06/01
-// <file>			PlayerThrow.h
-// <概要>		　　プレイヤーの投げるステート
+// <file>			PlayerTake.h
+// <概要>		　　プレイヤーの受け取るステート
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #pragma once
 #include"pch.h"
@@ -12,14 +12,16 @@
 
 // 前方宣言
 class Player;
+class PlayerStateExecutor;
+class PlayerStateBuilder;
 
-class PlayerThrow : public IState
+class PlayerTake : public IState
 {
 public:
 	// コンストラクタ
-	PlayerThrow(Player* player);
+	PlayerTake(Player* player, PlayerStateExecutor* executor, PlayerStateBuilder* builder);
 	// デストラクタ
-	~PlayerThrow();
+	~PlayerTake();
 	// 初期化
 	void Initialize() override;
 	// 立ち状態
@@ -34,25 +36,26 @@ public:
 	void Finalize() override;
 	// State変更
 	void ChangeStateKey(const DirectX::Keyboard::State& keyboardStateTracker);
-	// ボールを投げる動作
-	void BallThrowMove();
+	// ボールを取る動作
+	void BallTakeMove();
 	// 向きだけ変わる処理
-	void ChangeDirectionMove(const DirectX::Keyboard::State& keyboardStateTracker);
+	void ChangeDirection(const DirectX::Keyboard::State& keyboardStateTracker);
 	// 線形保管用
 	void SlarpRotate(DirectX::SimpleMath::Vector3 direction);
-	// 力をチャージ
-	void AddForce();
 	// 子の動き
 	void MoveChild();
-	// 手の動き
+	// 腕の動き
 	void MoveHand();
 	// しっぽの動き
 	void MoveTail();
-
 private:
 	// プレイヤー
 	Player* m_player;
 	// 共通リソース
 	CommonResources* m_commonResources;
+	// 実行クラス
+	PlayerStateExecutor* m_stateExecutor;
+	// 他ステートのビルダー
+	PlayerStateBuilder* m_stateBuilder;
 
 };

@@ -15,16 +15,20 @@
 #include"Game/Player/PlayerPart/PlayerRightHand.h"
 #include"Game/Player/PlayerPart/PlayerTail.h"
 #include"Framework/StepTimer.h"
+#include"Game/Player/StatePattern/PlayerStateBuilder.h"
+#include"Game/Player/StatePattern/PlayerStateExecutor.h"
 /// <summary>
 /// コンストラクタ
 /// </summary>
 /// <param name="player">プレイヤー</param>
 /// <param name="resources">共通リソース</param>
 PlayerThrow::PlayerThrow(
-	Player* player 
+	Player* player,
+	PlayerStateExecutor* executor
 )
 	:
-	m_player(player)
+	m_player(player),
+	m_stateExecutor(executor)
 {
 	m_commonResources = CommonResources::GetInstance();
 }
@@ -110,7 +114,7 @@ void PlayerThrow::ChangeStateKey(
 	const auto& mouseState = m_commonResources->GetInputManager()->GetMouseState();
 	if (mouseState.leftButton == 0)
 	{
-		m_player->ChangeState(m_player->GetStanding());			//立ち状態に変更
+		m_stateExecutor->ChangeState(m_stateBuilder->GetStanding());			//立ち状態に変更
 	}
 }
 

@@ -11,12 +11,14 @@
 
 // 前方宣言
 class Player;
+class PlayerStateExecutor;
+class PlayerStateBuilder;
 
 class PlayerJumping : public IState
 {
 public:
 	// コンストラクタ
-	PlayerJumping(Player* player);
+	PlayerJumping(Player* player , PlayerStateExecutor* executor, PlayerStateBuilder* builder);
 	// デストラクタ
 	~PlayerJumping();
 	// 初期化
@@ -42,5 +44,9 @@ private:
 	Player* m_player;
 	// 共通リソース
 	CommonResources* m_commonResources;
+	// 実行クラス
+	PlayerStateExecutor* m_stateExecutor;
+	// 他ステートのビルダー
+	PlayerStateBuilder* m_stateBuilder;
 
 };

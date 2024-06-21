@@ -9,21 +9,14 @@
 #include"Interface/IComponent.h"
 #include"Interface/IState.h"
 #include"Game/Player/PlayerBase.h"
-#include"Game/Player/State/PlayerStanding.h"
-#include"State/PlayerJumping.h"
-#include"State/PlayerRunning.h"
-#include"State/PlayerTake.h"
-#include"State/PlayerThrow.h"
+
 
 // 前方宣言
 class CommonResources;
-class PlayerStanding;
-class PlayerJumping;
-class PlayerRunning;
-class PlayerTake;
-class PlayerThrow;
 
 class PlayerBody;
+class PlayerStateBuilder;
+class PlayerStateExecutor;
 
 class Player : public PlayerBase
 {
@@ -39,21 +32,13 @@ public:
 
 	// 質量設定
 	float GetMass() const override { return m_mass; }				
-	void SetMass(const float& mass) override { m_mass = mass; }		
+	void SetMass(const float& mass) override { m_mass = mass; }	
 
-	// ステート用++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	// 状態取得
-	PlayerStanding* GetStanding() { return m_standing.get(); }		// 立ち状態取得
-	PlayerJumping* GetJumping() { return m_jumping.get(); }			// ジャンプ状態取得
-	PlayerRunning* GetRunning() { return m_runnning.get(); }		// 走る状態取得
-	PlayerTake* GetTake() { return m_taking.get(); }				// 取る状態取得
-	PlayerThrow* GetThrow() { return m_throw.get(); }				// 投げ状態取得
-
-	// 状態を遷移する
-	void ChangeState(IState* currentState);	
-
-	// 現在のステート情報を取得
-	IState* GetNowState() const { return m_currentState; }			
+	// プレイヤーのステートをゲットする
+	PlayerStateExecutor* GetState() { return m_stateExecutor.get(); }
+	// プレイヤーのステート一覧の取得
+	PlayerStateBuilder* GetStateList() { return m_stateBuilder.get(); }
+	
 
 	// プロパティ（取得と設定）++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	// 速度設定
@@ -127,12 +112,8 @@ private:
 	int m_nodeNumber;
 	
 	//　ステート用+++++++++++++++++++++++++++++++++++++++++++++++
-	IState* m_currentState;						// 現在の状態
-	std::unique_ptr<PlayerStanding> m_standing;	// 立ち状態
-	std::unique_ptr<PlayerJumping> m_jumping;	// ジャンプ状態
-	std::unique_ptr<PlayerRunning> m_runnning;	// 走り状態
-	std::unique_ptr<PlayerTake> m_taking;		// 取る状態
-	std::unique_ptr<PlayerThrow> m_throw;		// 投げ状態
+	std::unique_ptr<PlayerStateBuilder> m_stateBuilder;
+	std::unique_ptr<PlayerStateExecutor> m_stateExecutor;
 
 	//  プレイヤーの情報+++++++++++++++++++++++++++++++++++++++++++
 	int m_partID;								 // ID

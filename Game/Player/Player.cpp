@@ -10,6 +10,8 @@
 #include"Game/CommonResources.h"
 #include"Libraries/NakashiLib/InputManager.h"
 #include"Framework/DeviceResources.h"
+#include"StatePattern/PlayerStateBuilder.h"
+#include"StatePattern/PlayerStateExecutor.h"
 
 /// <summary>
 /// コンストラクタ
@@ -41,15 +43,12 @@ Player::Player(
 	m_ballTaking{false},
 	m_forceCharge{},
 	m_body{},
-	m_standing{},
-	m_currentState{},
-	m_jumping{},
-	m_runnning{},
-	m_throw{},
-	m_taking{},
 	m_nodeNumber(0)
 {
 	m_commonResources = CommonResources::GetInstance();
+
+	m_stateBuilder = std::make_unique<PlayerStateBuilder>(this);
+	m_stateExecutor = std::make_unique<PlayerStateExecutor>(this, m_stateBuilder->GetStanding());
 }
 
 /// <summary>
@@ -75,16 +74,7 @@ void Player::Initialize()
 		DirectX::SimpleMath::Quaternion::Identity);
 	m_body = body.get();
 	SetChild(std::move(body));							// プレイヤーの子にbodyを設定
-	
-	
-	m_standing = std::make_unique<PlayerStanding>(this);		// 立ち状態
-	m_jumping = std::make_unique<PlayerJumping>(this);		// ジャンプ状態
-	m_runnning = std::make_unique<PlayerRunning>(this);		// 移動状態
-	m_taking = std::make_unique<PlayerTake>(this);			// 取る状態
-	m_throw = std::make_unique<PlayerThrow>(this);			// 投げ状態
 
-	m_currentState = m_standing.get();			// 初期の状態は立ち状態
-	m_currentState->OnEnter();					// 最初のステート状態に移行
 }
 
 /// <summary>
@@ -98,7 +88,7 @@ void Player::Update(
 	const DirectX::SimpleMath::Quaternion& quaternion
 )
 {
-	m_currentState->Update();											// ステートパターンを回す
+	m_stateExecutor->Update();											// ステートパターンを回す
 
 	PlayerBase::Update(														// ベースの更新
 		m_position + GetInitialPosition(),
@@ -120,16 +110,5 @@ void Player::Render(
  	PlayerBase::Render(view , projection);
 }
 
-/// <summary>
-/// ステートパターンの変更
-/// </summary>
-/// <param name="currentState">ステートの状態</param>
-void Player::ChangeState(
-	IState* currentState
-)
-{
-	m_currentState->OnExit();		// 現在のステートを出る
-	m_currentState = currentState;	// ステート変更
-	m_currentState->OnEnter();		// 次のステートに入る
-}
+
 

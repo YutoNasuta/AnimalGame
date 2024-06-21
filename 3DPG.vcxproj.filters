@@ -53,9 +53,6 @@
     <Filter Include="Interface">
       <UniqueIdentifier>{a69222c7-bc95-49c7-9c70-6953fcdf713a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Player\State">
-      <UniqueIdentifier>{5b2343c6-ffb0-446f-be42-67afdb31a7f8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Player\Part">
       <UniqueIdentifier>{8af998d3-c4a7-44c4-8763-c067d1615d28}</UniqueIdentifier>
     </Filter>
@@ -70,6 +67,12 @@
     </Filter>
     <Filter Include="Game\Stage">
       <UniqueIdentifier>{07bd8c64-6407-4d7c-9999-ed8613fb28e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Player\StatePattern">
+      <UniqueIdentifier>{483997bf-57f6-49b3-a2ee-ee532de6a48b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Player\StatePattern\State">
+      <UniqueIdentifier>{4b7b57a5-c20c-47ea-8ade-1d292db0c750}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -125,9 +128,6 @@
     <ClInclude Include="Game\Ball\BallMove.h">
       <Filter>Game\Ball</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Player\State\PlayerStanding.h">
-      <Filter>Game\Player\State</Filter>
-    </ClInclude>
     <ClInclude Include="Interface\IComponent.h">
       <Filter>Interface</Filter>
     </ClInclude>
@@ -149,20 +149,8 @@
     <ClInclude Include="Game\Player\PlayerPart\PlayerRightHand.h">
       <Filter>Game\Player\Part</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Player\State\PlayerRunning.h">
-      <Filter>Game\Player\State</Filter>
-    </ClInclude>
     <ClInclude Include="Game\Player\Player.h">
       <Filter>Game\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Player\State\PlayerJumping.h">
-      <Filter>Game\Player\State</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Player\State\PlayerTake.h">
-      <Filter>Game\Player\State</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Player\State\PlayerThrow.h">
-      <Filter>Game\Player\State</Filter>
     </ClInclude>
     <ClInclude Include="Game\Enemy\Enemy.h">
       <Filter>Game\Enemy</Filter>
@@ -244,6 +232,28 @@
     </ClInclude>
     <ClInclude Include="Game\Enemy\BehaviorTree\BehaviorTreeBuilder.h" />
     <ClInclude Include="Game\Enemy\BehaviorTree\State\EnemyStanding.h" />
+    <ClInclude Include="Game\Player\StatePattern\State\PlayerStanding.h">
+      <Filter>Game\Player\StatePattern\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Player\StatePattern\State\PlayerJumping.h">
+      <Filter>Game\Player\StatePattern\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Player\StatePattern\State\PlayerRunning.h">
+      <Filter>Game\Player\StatePattern\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Player\StatePattern\State\PlayerTake.h">
+      <Filter>Game\Player\StatePattern\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Player\StatePattern\State\PlayerThrow.h">
+      <Filter>Game\Player\StatePattern\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Player\State\PlayerStateBuilder.h">
+      <Filter>Game\Player\StatePattern</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Player\StatePattern\PlayerStateExecutor.h">
+      <Filter>Game\Player\StatePattern</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Player\StatePattern\PlayerStateBuilder.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -283,9 +293,6 @@
     <ClCompile Include="Game\Ball\BallMove.cpp">
       <Filter>Game\Ball</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Player\State\PlayerStanding.cpp">
-      <Filter>Game\Player\State</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Player\PlayerBase.cpp">
       <Filter>Game\Player</Filter>
     </ClCompile>
@@ -304,20 +311,8 @@
     <ClCompile Include="Game\Player\PlayerPart\PlayerRightHand.cpp">
       <Filter>Game\Player\Part</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Player\State\PlayerRunning.cpp">
-      <Filter>Game\Player\State</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Player\Player.cpp">
       <Filter>Game\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Player\State\PlayerJumping.cpp">
-      <Filter>Game\Player\State</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Player\State\PlayerTake.cpp">
-      <Filter>Game\Player\State</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Player\State\PlayerThrow.cpp">
-      <Filter>Game\Player\State</Filter>
     </ClCompile>
     <ClCompile Include="Game\Enemy\Enemy.cpp">
       <Filter>Game\Enemy</Filter>
@@ -390,6 +385,28 @@
     </ClCompile>
     <ClCompile Include="Game\Enemy\BehaviorTree\BehaviorTreeBuilder.cpp" />
     <ClCompile Include="Game\Enemy\BehaviorTree\State\EnemyStanding.cpp" />
+    <ClCompile Include="Game\Player\StatePattern\State\PlayerJumping.cpp">
+      <Filter>Game\Player\StatePattern\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Player\StatePattern\State\PlayerRunning.cpp">
+      <Filter>Game\Player\StatePattern\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Player\StatePattern\State\PlayerStanding.cpp">
+      <Filter>Game\Player\StatePattern\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Player\StatePattern\State\PlayerTake.cpp">
+      <Filter>Game\Player\StatePattern\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Player\StatePattern\State\PlayerThrow.cpp">
+      <Filter>Game\Player\StatePattern\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Player\State\PlayerStateBuilder.cpp">
+      <Filter>Game\Player\StatePattern</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Player\StatePattern\PlayerStateExecutor.cpp">
+      <Filter>Game\Player\StatePattern</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Player\StatePattern\PlayerStateBuilder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />

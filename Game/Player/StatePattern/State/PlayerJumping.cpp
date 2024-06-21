@@ -14,17 +14,21 @@
 #include"Game/Player/PlayerPart/PlayerLeftHand.h"
 #include"Game/Player/PlayerPart/PlayerRightHand.h"
 #include"Framework/StepTimer.h"
-
+#include"Game/Player/StatePattern/PlayerStateBuilder.h"
+#include"Game/Player/StatePattern/PlayerStateExecutor.h"
 /// <summary>
 /// コンストラクタ
 /// </summary>
 /// <param name="player">プレイヤー</param>
 /// <param name="resource">共通リソース</param>
 PlayerJumping::PlayerJumping(
-	Player* player
-)
+	Player* player, 
+	PlayerStateExecutor* executor, 
+	PlayerStateBuilder* builder)
 :
-	m_player(player)
+	m_player(player),
+	m_stateExecutor(executor),
+	m_stateBuilder(builder)
 {
 	m_commonResources = CommonResources::GetInstance();
 }
@@ -121,9 +125,9 @@ void PlayerJumping::ChangeStateKey(
 	const auto& mouseState = m_commonResources->GetInputManager()->GetMouseState(); 
 	 if(mouseState.rightButton)
 	{
-		m_player->ChangeState(m_player->GetTake());		// 受け状態に遷移
+		 m_stateExecutor->ChangeState(m_stateBuilder->GetTake());		// 受け状態に遷移
 	}
-	m_player->ChangeState(m_player->GetStanding());		// 立ち状態に遷移する
+	 m_stateExecutor->ChangeState(m_stateBuilder->GetStanding());		// 立ち状態に遷移する
 }
 
 /// <summary>

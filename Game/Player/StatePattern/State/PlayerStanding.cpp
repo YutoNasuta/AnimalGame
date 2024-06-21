@@ -15,16 +15,22 @@
 #include"Game/Player/PlayerPart/PlayerRightHand.h"
 #include"Game/Player/PlayerPart/PlayerTail.h"
 #include"Framework/StepTimer.h"
+#include"Game/Player/StatePattern/PlayerStateBuilder.h"
+#include"Game/Player/StatePattern/PlayerStateExecutor.h"
 /// <summary>
 /// コンストラクタ
 /// </summary>
 /// <param name="player">プレイヤー</param>
 /// <param name="resource">共通リソース</param>
 PlayerStanding::PlayerStanding(
-	Player* player
+	Player* player,
+	PlayerStateExecutor* executor, 
+	PlayerStateBuilder* builder
 )
 :
-	m_player(player)
+	m_player(player),
+	m_stateExecutor(executor),
+	m_stateBuilder(builder)
 {
 	m_commonResources = CommonResources::GetInstance();
 }
@@ -90,21 +96,21 @@ void PlayerStanding::ChangeStateKey(
 {
 	if (keyboardStateTracker.IsKeyDown(DirectX::Keyboard::Space))	 //スペースキーを押したとき
 	{
-		m_player->ChangeState(m_player->GetJumping());			// ジャンプ状態に遷移する
+		m_stateExecutor->ChangeState(m_stateBuilder->GetJumping());			// ジャンプ状態に遷移する
 	}
 	if (keyboardStateTracker.IsKeyDown(DirectX::Keyboard::Keys::D) || keyboardStateTracker.IsKeyDown(DirectX::Keyboard::Keys::A) ||
 		keyboardStateTracker.IsKeyDown(DirectX::Keyboard::Keys::W) || keyboardStateTracker.IsKeyDown(DirectX::Keyboard::Keys::S))			// WASDのどれかを押したとき
 	{
-		m_player->ChangeState(m_player->GetRunning());			// プレイヤの状態を「ランニング」状態に遷移する
+		m_stateExecutor->ChangeState(m_stateBuilder->GetRunning());			// プレイヤの状態を「ランニング」状態に遷移する
 	}
 	const auto& mouseState = m_commonResources->GetInputManager()->GetMouseState();		// マウスの状態取得
 	if (mouseState.rightButton == 1 && m_player->GetBallTakeFlag() == false)			// 右ボタンが押された　かつ　ボールをもっていない
 	{
-		m_player->ChangeState(m_player->GetTake());				// 受け状態に変更
+		m_stateExecutor->ChangeState(m_stateBuilder->GetTake());				// 受け状態に変更
 	}
 	if (mouseState.leftButton == 1 && m_player->GetBallTakeFlag() == true)				// 左ボタンが押された　かつ　ボールを持っている
 	{
-		m_player->ChangeState(m_player->GetThrow());			// 投げ状態に変更
+		m_stateExecutor->ChangeState(m_stateBuilder->GetThrow());			// 投げ状態に変更
 	}
 }
 

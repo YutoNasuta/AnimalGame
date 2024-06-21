@@ -15,7 +15,8 @@
 #include"Game/Player/PlayerPart/PlayerLeftHand.h"
 #include"Game/Player/PlayerPart/PlayerTail.h"
 #include"Framework/StepTimer.h"
-
+#include"Game/Player/StatePattern/PlayerStateBuilder.h"
+#include"Game/Player/StatePattern/PlayerStateExecutor.h"
 
 /// <summary>
 /// コンストラクタ
@@ -23,10 +24,14 @@
 /// <param name="player">プレイヤー</param>
 /// <param name="resource">共通リソース</param>
 PlayerRunning::PlayerRunning(
-	Player* player
+	Player* player, 
+	PlayerStateExecutor* executor, 
+	PlayerStateBuilder* builder
 )
 :
-	m_player(player)
+	m_player(player),
+	m_stateExecutor(executor),
+	m_stateBuilder(builder)
 {
 	m_commonResources = CommonResources::GetInstance();
 }
@@ -154,20 +159,20 @@ void PlayerRunning::ChangeStateKey(
 	if (keyboardStateTracker.IsKeyUp(DirectX::Keyboard::Keys::D) && keyboardStateTracker.IsKeyUp(DirectX::Keyboard::Keys::A) &&
 		keyboardStateTracker.IsKeyUp(DirectX::Keyboard::Keys::W) && keyboardStateTracker.IsKeyUp(DirectX::Keyboard::Keys::S))			// キーの開放で、Standingに遷移
 	{
-		m_player->ChangeState(m_player->GetStanding());
+		m_stateExecutor->ChangeState(m_stateBuilder->GetStanding());
 	}
 	if (keyboardStateTracker.IsKeyDown(DirectX::Keyboard::Keys::Space))					// スペースキーでジャンプに遷移
 	{
-		m_player->ChangeState(m_player->GetJumping());
+		m_stateExecutor->ChangeState(m_stateBuilder->GetJumping());
 	}
 	const auto& mouseState = m_commonResources->GetInputManager()->GetMouseState();		//マウスの情報取得
 	if (mouseState.rightButton == 1 && m_player->GetBallTakeFlag() == false)			// 受け状態に変更	
 	{
-		m_player->ChangeState(m_player->GetTake());
+		m_stateExecutor->ChangeState(m_stateBuilder->GetTake());
 	}
 	if (mouseState.leftButton == 1 && m_player->GetBallTakeFlag() == true)				// 投げ状態に変更
 	{
-		m_player->ChangeState(m_player->GetThrow());
+		m_stateExecutor->ChangeState(m_stateBuilder->GetThrow());
 	}
 }
 
