@@ -80,9 +80,9 @@ namespace NakashiLib
 			std::random_device rd;
 			std::mt19937 gen(rd());
 			// ランダムの最小と最大を設定
-			std::uniform_int_distribution<> dis(0, m_children.size() - 1);
+			std::uniform_int_distribution<size_t> dis(0, m_children.size() - 1);
 
-			int randomIndex = dis(gen);
+			size_t randomIndex = dis(gen);
 			// ランダムに選ばれた実行を返す
 			return m_children[randomIndex]->Execute();
 		}
@@ -120,19 +120,7 @@ namespace NakashiLib
 	class ActionNode : public IBehaviorNode
 	{
 	public:
-		// コンストラクタ
-		ActionNode(std::function<bool()> function)
-			:
-			m_actionFunc(function)
-		{
-		}
-		//実行する
-		bool Execute() override
-		{
-			return m_actionFunc();
-		}
-	private:
-		std::function<bool()> m_actionFunc;
+		virtual ~ActionNode() = default;
 	};
 
 	/// <summary>
@@ -225,11 +213,10 @@ namespace NakashiLib
 		std::unique_ptr<IBehaviorNode> behaviorTreeRoot;
 	};
 
-
-	// 文献
-	// ビヘイビアツリーの基本
-	// https://engineering.linecorp.com/ja/blog/behavior-tree
-	// ビヘイビアツリー実装時の動きなど
-	// https://edom18.hateblo.jp/entry/2017/08/28/104547
-
 }
+
+// 文献
+// ビヘイビアツリーの基本
+// https://engineering.linecorp.com/ja/blog/behavior-tree
+// ビヘイビアツリー実装時の動きなど
+// https://edom18.hateblo.jp/entry/2017/08/28/104547

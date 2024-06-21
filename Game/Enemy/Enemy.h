@@ -13,6 +13,13 @@ class CommonResources;
 
 class EnemyBody;
 
+class BehaviorTreeBuilder;
+
+namespace NakashiLib
+{
+    class BehaviorTreeExecutor;
+}
+
 class Enemy : public EnemyBase 
 {
 public:
@@ -70,6 +77,10 @@ private:
     DirectX::SimpleMath::Vector3 m_gravity;      //　重力
     bool m_ballTaking;							 // ボールを持っている状態か持っていない状態か
     float m_forceCharge;						 // ボールのチャージ量
+
+    // ビヘイビアツリーノード実行用
+    std::unique_ptr<BehaviorTreeBuilder> m_behaviorTreeBuilder;
+    std::unique_ptr<NakashiLib::BehaviorTreeExecutor> m_behaviorExecutor;
 
     EnemyBody* m_body;
 };

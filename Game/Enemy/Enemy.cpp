@@ -9,6 +9,8 @@
 #include"Game/Enemy/Parts/EnemyBody.h"
 #include "Game/CommonResources.h"
 #include "Libraries/NakashiLib/InputManager.h"
+#include"Game/Enemy/BehaviorTree/BehaviorTreeBuilder.h"
+#include"Libraries/NakashiLib/BehaviorNode.h"
 
 Enemy::Enemy(IComponent* parent,
     const DirectX::SimpleMath::Vector3& position,
@@ -47,6 +49,10 @@ void Enemy::Initialize()
     );
     m_body = body.get();									// 呼び出し用bodyに格納
     SetChild(std::move(body));					// プレイヤーの子にbodyを設定
+
+    m_behaviorTreeBuilder = std::make_unique<BehaviorTreeBuilder>();
+    auto tree =  m_behaviorTreeBuilder->BuildTree(this);
+    m_behaviorExecutor = std::make_unique<NakashiLib::BehaviorTreeExecutor>(std::move(tree));
 }
 
 void Enemy::Update(
@@ -60,6 +66,8 @@ void Enemy::Update(
         m_position + GetInitialPosition(),
         m_quaternion
     );
+
+    m_behaviorExecutor->Update();
 }
 
 

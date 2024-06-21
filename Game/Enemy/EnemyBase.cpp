@@ -138,7 +138,7 @@ void EnemyBase::Render(
 	// モデルの描画
 	DrawModel( matrix , view , projection);
 #ifdef _DEBUG
-	DrawBoundingBox(matrix, view, projection);
+	//DrawBoundingBox(matrix, view, projection);
 #endif
 
 	// パーツを描画する

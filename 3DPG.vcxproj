@@ -186,6 +186,8 @@
   <ItemGroup>
     <ClInclude Include="Framework\DeviceResources.h" />
     <ClInclude Include="Framework\Graphics.h" />
+    <ClInclude Include="Game\Enemy\BehaviorTree\BehaviorTreeBuilder.h" />
+    <ClInclude Include="Game\Enemy\BehaviorTree\State\EnemyStanding.h" />
     <ClInclude Include="Game\Resources.h" />
     <ClInclude Include="Framework\StepTimer.h" />
     <ClInclude Include="Game\Ball\Ball.h" />
@@ -250,6 +252,8 @@
     <ClCompile Include="Game\Ball\BallThrow.cpp" />
     <ClCompile Include="Game\Camera\TPSCamera.cpp" />
     <ClCompile Include="Game\CommonResources.cpp" />
+    <ClCompile Include="Game\Enemy\BehaviorTree\BehaviorTreeBuilder.cpp" />
+    <ClCompile Include="Game\Enemy\BehaviorTree\State\EnemyStanding.cpp" />
     <ClCompile Include="Game\Enemy\Enemy.cpp" />
     <ClCompile Include="Game\Enemy\EnemyBase.cpp" />
     <ClCompile Include="Game\Enemy\Parts\EnemyBody.cpp" />
